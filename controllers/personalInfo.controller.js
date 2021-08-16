@@ -6,7 +6,7 @@ const getPersonalInfo = async (req, res) => {
     const { id } = params;
 
     try {
-        const userInfo =  await PersonalInfoModel.findOne({ id: id });
+        const userInfo =  await PersonalInfoModel.findOne({ id: id }); //prueba
         
         res.json(userInfo);
     }
