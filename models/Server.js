@@ -3,6 +3,7 @@ const cors = require('cors');
 const dbConnection = require('../database/config');
 const personalInfoRoutes = require('../routes/personalInfo.routes');
 const educationInfoRoutes = require('../routes/education.routes');
+const experienceInfoRoutes = require('../routes/experience.routes'); //ruta para encontrar route de experiencia
 
 class Server {
     constructor() {
@@ -26,6 +27,7 @@ class Server {
     routes() {
         this.app.use('/api/v1/personal-info', personalInfoRoutes);
         this.app.use('/api/v1/education', educationInfoRoutes);
+        this.app.use('/api/v1/experience',experienceInfoRoutes); //uri para la experienci laboral
     }
 
     start() {
