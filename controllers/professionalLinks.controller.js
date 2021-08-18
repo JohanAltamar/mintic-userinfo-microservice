@@ -7,7 +7,9 @@ const getAllProfessionalLinks = async (req, res ) => {
     const {id} = params;
 
     try {
-        const professionalLinks = await ProfessionalLinksModel.find({id}).populate({ path: 'social_network', select: 'name -_id', model: SocialNetworkModel })
+        const professionalLinks = await ProfessionalLinksModel
+            .find({id})
+            .populate({ path: 'social_network', select: 'name', model: SocialNetworkModel });
         res.json( { results: professionalLinks });
     }
     catch (err) {
@@ -21,7 +23,9 @@ const getProfessionalLinks = async (req, res) => {
     const {id, professional_links_id } = params;
 
     try {
-        const professionalLinksInfo =  await ProfessionalLinksModel.findOne({id: id, _id: professional_links_id}); 
+        const professionalLinksInfo =  await ProfessionalLinksModel
+            .findOne({id: id, _id: professional_links_id})
+            .populate({ path: 'social_network', select: 'name', model: SocialNetworkModel });
         res.json(professionalLinksInfo);
     }
     catch (err) {
