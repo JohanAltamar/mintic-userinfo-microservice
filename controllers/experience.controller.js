@@ -28,7 +28,7 @@ const setExperienceInfo = async(req, res) => {
         res.status(500).json({ message: err.message });
         console.log(err.message);
     }
-    res.json({message: 'Experience info'});
+    
 };
 
 /* PUT */
