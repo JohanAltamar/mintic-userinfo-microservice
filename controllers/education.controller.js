@@ -5,7 +5,9 @@ const getEducationInfo = async(req, res) => {
     const { params } = req;
     const { id } = params;
     try {
-        const educationInfo = await EducationInfoModel.find({ id });
+        const educationInfo = await EducationInfoModel
+            .find({ id })
+            .populate({path: 'program_type', select: 'name -_id'});
         res.json({
             results: educationInfo
         });
@@ -28,7 +30,6 @@ const setEducationInfo = async(req, res) => {
         res.status(500).json({ message: err.message });
         console.log(err.message);
     }
-    res.json({message: 'Education info'});
 };
 
 /* PUT */

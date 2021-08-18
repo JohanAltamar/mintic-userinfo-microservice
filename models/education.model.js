@@ -7,7 +7,7 @@ const educationInfoSchema = new Schema({
     institution_name: { type: String, required: true, trim: true },
     description: { type: String, trim: true },
     start_date: { type: Date, required: true },
-    end_date: { type: Date, required: true },
+    end_date: { type: Date },
 });
 
 module.exports = model('EducationInfo', educationInfoSchema);
