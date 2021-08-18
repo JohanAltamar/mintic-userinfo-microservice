@@ -1,4 +1,5 @@
 const ProfessionalLinksModel = require('../models/professionalLinks.model');
+const SocialNetworkModel = require('../models/socialNetwork.model');
 
 /* GET ALL */
 const getAllProfessionalLinks = async (req, res ) => {
@@ -6,7 +7,7 @@ const getAllProfessionalLinks = async (req, res ) => {
     const {id} = params;
 
     try {
-        const professionalLinks = await ProfessionalLinksModel.find({id}).populate({ path: 'SocialNetwork', select: 'social_network_name' })
+        const professionalLinks = await ProfessionalLinksModel.find({id}).populate({ path: 'social_network', select: 'name -_id', model: SocialNetworkModel })
         res.json( { results: professionalLinks });
     }
     catch (err) {
