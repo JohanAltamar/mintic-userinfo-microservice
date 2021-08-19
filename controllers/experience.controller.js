@@ -44,8 +44,22 @@ const updateExperienceInfo = async(req, res) => {
     }
 };
 
+/* DELETE */
+const deleteExperienceInfo = async(req, res) => {
+    const { params, body } = req;
+    const { id, experience_id } = params;
+    try {
+        await ExperienceInfoModel.findOneAndDelete({ id, _id: experience_id }, body);
+        res.json({ message: 'Experience info deleted' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+        console.log(err.message);
+    }
+};
+
 module.exports = {
     getExperienceInfo,
     setExperienceInfo,
     updateExperienceInfo,
+    deleteExperienceInfo,
 }
