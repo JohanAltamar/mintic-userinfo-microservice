@@ -10,6 +10,7 @@ const personalInfoSchema = new Schema({
     dni: { type: String, trim: true }, 
     dob: { type: Date, required: true }, 
     description: { type: String, trim: true, required: true },
+    skills: { type: Array, of: String, required: true },
 });
 
 module.exports = model('PersonalInfo', personalInfoSchema);

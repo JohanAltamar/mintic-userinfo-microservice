@@ -4,6 +4,8 @@ const dbConnection = require('../database/config');
 const personalInfoRoutes = require('../routes/personalInfo.routes');
 const educationInfoRoutes = require('../routes/education.routes');
 const experienceInfoRoutes = require('../routes/experience.routes'); //ruta para encontrar route de experiencia
+const programTypesRoutes = require('../routes/programType.routes');
+const professionalLinksRoutes = require('../routes/professionalLinks.routes'); //ruta para encontrar route de links
 
 class Server {
     constructor() {
@@ -28,6 +30,8 @@ class Server {
         this.app.use('/api/v1/personal-info', personalInfoRoutes);
         this.app.use('/api/v1/education', educationInfoRoutes);
         this.app.use('/api/v1/experience',experienceInfoRoutes); //uri para la experienci laboral
+        this.app.use('/api/v1/program-types', programTypesRoutes);
+        this.app.use('/api/v1/professional-links',professionalLinksRoutes);//uri para links
     }
 
     start() {
