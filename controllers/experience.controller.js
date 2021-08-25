@@ -49,7 +49,7 @@ const deleteExperienceInfo = async(req, res) => {
     const { params} = req;
     const { id, experience_id } = params;
     try {
-        await ExperienceInfoModel.findOneAndDelete({ id, _id: experience_id }, body);
+        await ExperienceInfoModel.findOneAndDelete({ id, _id: experience_id });
         res.json({ message: 'Experience info deleted' });
     } catch (err) {
         res.status(500).json({ message: err.message });
